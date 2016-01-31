@@ -1,0 +1,79 @@
+﻿<!doctype html>
+<html ng-app="appModule">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>User</title>
+		 <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css({.tmp/serve,src}) styles/app.css -->
+    <!-- inject:css -->
+    <!-- css files will be automatically insert here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+		
+	</head>
+	<body >
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header ng-scope">
+	<header class="mdl-layout__header">
+	<acme-navbar creation-date="main.creationDate"></acme-navbar></header>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<main class="mdl-layout__content">
+    <div class="page-content">
+      <div class="acme-card-wide mdl-card mdl-shadow--2dp">
+		<div ng-controller="myController as ctrl">
+		
+		 <div class="mdl-grid">
+
+        <div class="mdl-cell mdl-cell--4-col" ng-repeat="items in ctrl.data | filter:login">
+          <div class="acme-card-square mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">  
+              <h2 class="mdl-card__title-text">{{ items.id }}</h2>
+			  
+            </div>
+            <div class="mdl-card__media">
+              <img ng-src="{{ items.avatar_url  }}" height="100" width="100" alt="{{ items.html_url }}">
+            </div>
+            <div class="mdl-card__supporting-text">
+              {{  items.login }}
+			  <p></p>
+			  {{ items.events_url}}
+			
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" ng-href="{{ items.url }}">
+                Website
+              </a>
+            </div>
+          </div>
+		 
+        </div>
+		
+		</div>
+		<div>
+		<input type="text" name="login" data-ng-model="login"/> Wpisz login
+		</div>
+	 </div>
+	  
+	  
+		
+		</div>
+		</div>
+		</main>
+	 <footer class="mdl-mini-footer">
+    <div class="mdl-mini-footer__right-section">
+      <div class="mdl-logo">
+        With ♥ thanks to the contributions of<acme-malarkey extra-values="['Yeoman', 'Gulp', 'Angular']"></acme-malarkey>
+      </div>
+    </div>
+  </footer>
+	</div>
+	</body>
+</html>
